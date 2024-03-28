@@ -17,9 +17,9 @@
   </dependencies>
   <distributionManagement>
         <repository>
-         <id>Artifactory</id>
-         <name>example-repo-local</name>
-         <url>http://18.236.69.123:8082/artifactory/example-repo-local/</url>
+         <id>mynexus-id</id>
+         <name>mysnapshot</name>
+         <url>http://54.213.201.151:8081/repository/mysnapshot/</url>
        </repository>	   
 </distributionManagement>  
 </project>
