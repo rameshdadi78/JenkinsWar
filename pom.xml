@@ -17,9 +17,9 @@
   </dependencies>
   <distributionManagement>
         <repository>
-         <id>mynexus-id</id>
-         <name>myrelease</name>
-         <url>http://18.234.201.63:8081/repository/myrelease/</url>
+         <id>Artifactory</id>
+         <name>example-repo-local</name>
+         <url>http://18.236.69.123:8082/artifactory/example-repo-local/</url>
        </repository>	   
 </distributionManagement>  
 </project>
