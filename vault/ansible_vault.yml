@@ -1,0 +1,8 @@
+---
+ - name: vault examples
+   hosts: localhost
+   vars_files:
+    - mylogindetails.yml
+   tasks:
+   - name: repo downloading
+     shell: "git clone https://{{ myuserid }}:{{ mypasswd }}@github.com/Vimala-Daniel/JenkinsWar.git"
