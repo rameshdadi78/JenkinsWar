@@ -37,7 +37,7 @@ node {
         // Add the remote server's SSH key to known_hosts
         sh 'ssh-keyscan -H 192.168.0.112 >> /var/lib/jenkins/.ssh/known_hosts'
 
-        // Deploy the WAR file
+        // Deploy the WAR file using SCP with SSH key
         sh 'scp -i /var/lib/jenkins/.ssh/id_rsa target/JenkinsWar.war xplmdev@192.168.0.112:/opt/tomcat/webapps/JenkinsWar.war'
     }
     
