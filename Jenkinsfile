@@ -9,10 +9,10 @@ node{
    stage('Compile-Package-create-war-file'){
       // Get maven home path
       def mvnHome =  tool name: 'maven-3.9.9', type: 'maven'   
-      bat "${mvnHome}/bin/mvn package"
+      sh "${mvnHome}/bin/mvn package"
       }
 /*   stage ('Stop Tomcat Server') {
-               bat ''' @ECHO OFF
+               sh ''' @ECHO OFF
                wmic process list brief | find /i "tomcat" > NUL
                IF ERRORLEVEL 1 (
                     echo  Stopped
@@ -24,11 +24,11 @@ node{
 '''
    }*/
    stage('Deploy to Tomcat'){
-     bat "scp target\\JenkinsWar.war \"${tomcatWeb}\\JenkinsWar.war\""
+     sh "scp target\\JenkinsWar.war \"${tomcatWeb}\\JenkinsWar.war\""
    }
       stage ('Start Tomcat Server') {
          sleep(time:5,unit:"SECONDS") 
-         bat "${tomcatBin}\\startup.sh"
+         sh "${tomcatBin}\\startup.sh"
          sleep(time:100,unit:"SECONDS")
    }
 }
