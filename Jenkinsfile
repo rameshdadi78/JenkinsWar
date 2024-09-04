@@ -38,7 +38,7 @@ node {
         sh 'ssh-keyscan -H 192.168.0.112 >> /var/lib/jenkins/.ssh/known_hosts'
 
         // Deploy the WAR file
-        sh 'scp -i /var/lib/jenkins/.ssh/id_rsa target/JenkinsWar.war manager@192.168.0.112:/opt/tomcat/webapps/JenkinsWar.war'
+        sh 'scp -i /var/lib/jenkins/.ssh/id_rsa target/JenkinsWar.war xplmdev@192.168.0.112:/opt/tomcat/webapps/JenkinsWar.war'
     }
     
     stage('Start Tomcat Server') {
