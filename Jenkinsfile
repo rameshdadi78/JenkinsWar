@@ -14,16 +14,16 @@ node {
     }
     
     stage('Stop Tomcat Server') {
-        // Check if Tomcat is running and stop it if necessary
-        sh """
-        if pgrep -f 'tomcat' > /dev/null; then
-            echo 'Tomcat is running. Stopping Tomcat...'
-           sh "$sudo {tomcatBin}/shutdown.sh"
-            sleep 10
-        else
-            echo 'Tomcat is not running.'
-        fi
-        """
+    // Stop Tomcat server as the Tomcat user
+    sh """
+    if pgrep -f 'tomcat' > /dev/null; then
+        echo 'Tomcat is running. Stopping Tomcat...'
+        sudo -u tomcat ${tomcatBin}/shutdown.sh
+        sleep 10
+    else
+        echo 'Tomcat is not running.'
+    fi
+    """
     }
     
     stage('Deploy to Tomcat') {
