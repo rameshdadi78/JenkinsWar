@@ -7,7 +7,7 @@ node {
     }
     
     stage('Compile-Package-create-war-file') {
-        def mvnHome = tool name: 'maven-3.9.9', type: 'maven'
+        def mvnHome = tool name: 'maven-3', type: 'maven'
         sh "${mvnHome}/bin/mvn package"
     }
     
@@ -15,7 +15,7 @@ node {
         sh """
         if pgrep -f 'tomcat' > /dev/null; then
             echo 'Tomcat is running. Stopping Tomcat...'
-            sudo ${tomcatBin}/shutdown.sh
+            sudo /opt/tomcat/bin/shutdown.sh
             sleep 10
         else
             echo 'Tomcat is not running.'
