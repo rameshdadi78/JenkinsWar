@@ -18,7 +18,7 @@ node {
         sh """
         if pgrep -f 'tomcat' > /dev/null; then
             echo 'Tomcat is running. Stopping Tomcat...'
-            ${tomcatBin}/shutdown.sh
+           sh "$sudo {tomcatBin}/shutdown.sh"
             sleep 10
         else
             echo 'Tomcat is not running.'
