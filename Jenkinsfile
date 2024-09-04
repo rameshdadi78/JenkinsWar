@@ -18,7 +18,7 @@ node{
                     echo  Stopped
                ) ELSE (
                echo running
-                  "${tomcatBin}\\shutdown.bat"
+                  "${tomcatBin}\\shutdown.sh"
                   sleep(time:10,unit:"SECONDS") 
                )
 '''
