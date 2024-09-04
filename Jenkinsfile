@@ -7,7 +7,7 @@ node {
     }
     
     stage('Compile-Package-create-war-file') {
-        def mvnHome = tool name: 'maven-3', type: 'maven'
+        def mvnHome = tool name: 'maven-3.9.9', type: 'maven'
         sh "${mvnHome}/bin/mvn package"
     }
     
