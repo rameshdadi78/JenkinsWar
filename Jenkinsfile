@@ -30,7 +30,7 @@ node {
         // Check if the WAR file exists before attempting to deploy
         sh 'ls -l target/'
         sh 'ls -l target/JenkinsWar.war'
-        sh "scp target/JenkinsWar.war manager@<your-linux-server>:${tomcatWeb}/JenkinsWar.war"
+        sh "scp target/JenkinsWar.war manager@192.168.0.112:${tomcatWeb}/JenkinsWar.war"
     }
     
     stage('Start Tomcat Server') {
