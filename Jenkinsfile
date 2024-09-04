@@ -27,10 +27,14 @@ node {
     }
     
     stage('Deploy to Tomcat') {
-        // Check if the WAR file exists before attempting to deploy
-        sh 'ls -l target/'
-        sh 'ls -l target/JenkinsWar.war'
-        sh "scp target/JenkinsWar.war manager@192.168.0.112:${tomcatWeb}/JenkinsWar.war"
+    // Print known_hosts to verify contents
+    sh 'cat ~/.ssh/known_hosts'
+
+    // Add the remote server's SSH key to known_hosts
+    sh 'ssh-keyscan -H 192.168.0.112 >> ~/.ssh/known_hosts'
+
+    // Deploy the WAR file
+    sh 'scp target/JenkinsWar.war manager@192.168.0.112:/opt/tomcat/webapps/JenkinsWar.war'
     }
     
     stage('Start Tomcat Server') {
