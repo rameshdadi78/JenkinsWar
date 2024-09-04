@@ -3,7 +3,7 @@ node {
     def tomcatBin = '/opt/tomcat/bin'
     
     stage('SCM Checkout') {
-        git 'https://github.com/sivajavatechie/JenkinsWar.git'
+        git 'https://github.com/rameshdadi78/JenkinsWar.git'
     }
     
     stage('Compile-Package-create-war-file') {
