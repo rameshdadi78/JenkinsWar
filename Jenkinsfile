@@ -27,11 +27,16 @@ node {
     }
     
     stage('Deploy to Tomcat') {
-    // Print known_hosts to verify contents
-    sh 'cat ~/.ssh/known_hosts'
+    // Ensure the .ssh directory and known_hosts file exist
+    sh '''
+    mkdir -p /var/lib/jenkins/.ssh
+    touch /var/lib/jenkins/.ssh/known_hosts
+    chmod 700 /var/lib/jenkins/.ssh
+    chmod 600 /var/lib/jenkins/.ssh/known_hosts
+    '''
 
     // Add the remote server's SSH key to known_hosts
-    sh 'ssh-keyscan -H 192.168.0.112 >> ~/.ssh/known_hosts'
+    sh 'ssh-keyscan -H 192.168.0.112 >> /var/lib/jenkins/.ssh/known_hosts'
 
     // Deploy the WAR file
     sh 'scp target/JenkinsWar.war manager@192.168.0.112:/opt/tomcat/webapps/JenkinsWar.war'
